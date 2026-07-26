@@ -104,3 +104,107 @@ Successfully completed:
 - Summary Statistics
 - GitHub Version Control
 
+  # Week 2: Biomarker Correlation and Exploratory Data Analysis (EDA)
+
+## Objective
+The objective of Week 2 is to explore the Chronic Kidney Disease (CKD) dataset and identify meaningful relationships between clinical biomarkers. Exploratory Data Analysis (EDA) helps understand the structure of the data, detect patterns, identify outliers, and prepare the dataset for machine learning model development.
+
+---
+
+## Tasks Performed
+
+### 1. Dataset Loading
+- Loaded the preprocessed Chronic Kidney Disease dataset.
+- Verified the dataset structure, dimensions, and data types.
+- Ensured the dataset was ready for exploratory analysis.
+
+---
+
+### 2. Biomarker Distribution Analysis
+The distributions of important clinical biomarkers were analyzed using histograms and density plots.
+
+The following biomarkers were explored:
+- Age
+- Blood Pressure (BP)
+- Specific Gravity (SG)
+- Albumin (AL)
+- Hemoglobin (Hemo)
+
+These visualizations help identify:
+- Distribution of patient values
+- Presence of skewness
+- Outliers
+- Overall variability of each biomarker
+
+---
+
+### 3. Biomarker Relationship Analysis
+
+Scatter plots were created to study relationships between important clinical variables.
+
+Examples include:
+- Age vs Blood Pressure
+- Hemoglobin vs Serum Creatinine
+
+These plots help determine whether changes in one biomarker are associated with changes in another and provide insight into possible clinical relationships.
+
+---
+
+### 4. Correlation Analysis
+
+A correlation matrix was generated using all numerical features in the dataset.
+
+The correlation heatmap provides:
+- Strength of relationships between variables
+- Positive and negative correlations
+- Identification of highly correlated features
+
+Highly correlated variables may provide similar information and can introduce multicollinearity during machine learning model development.
+
+---
+
+### 5. Feature Selection Preparation
+
+Based on the correlation analysis:
+- Highly correlated features were identified.
+- Features showing excessive correlation can be removed or carefully selected before model training.
+- This step helps improve model performance, reduce redundancy, and enhance interpretability.
+
+---
+
+## Tools and Libraries Used
+
+- Python
+- Pandas
+- NumPy
+- Matplotlib
+- Seaborn
+
+---
+
+## Output Files
+
+The following outputs were generated during Week 2:
+
+- Biomarker Distribution Plots
+- Age vs Blood Pressure Scatter Plot
+- Hemoglobin vs Serum Creatinine Scatter Plot
+- Correlation Heatmap
+- Week 2 Summary Report
+
+---
+
+## Key Observations
+
+- Biomarker distributions provide insight into patient characteristics.
+- Scatter plots reveal potential relationships between important clinical variables.
+- The correlation heatmap highlights strongly associated features.
+- Identifying correlated variables helps reduce multicollinearity before machine learning.
+- Exploratory Data Analysis improves understanding of the dataset and supports better feature engineering.
+
+---
+
+## Conclusion
+
+Week 2 focused on performing comprehensive Exploratory Data Analysis (EDA) on the Chronic Kidney Disease dataset. Various visualization techniques were used to understand biomarker distributions and relationships among clinical variables. Correlation analysis helped identify highly correlated features, providing valuable guidance for feature selection. These analyses establish a strong foundation for developing accurate and reliable predictive models in the next phase of the project.
+
