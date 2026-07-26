@@ -201,155 +201,202 @@ The following outputs were generated during Week 2:
 Week 2 focused on performing comprehensive Exploratory Data Analysis (EDA) on the Chronic Kidney Disease dataset. Various visualization techniques were used to understand biomarker distributions and relationships among clinical variables. Correlation analysis helped identify highly correlated features, providing valuable guidance for feature selection. These analyses establish a strong foundation for developing accurate and reliable predictive models in the next phase of the project.
 
 
-Week 3: Predictive Modeling and Algorithm Selection
-Objective
+# Week 3: Predictive Modeling and Algorithm Selection
 
-The primary objective of Week 3 is to develop machine learning models capable of predicting whether a patient is affected by Chronic Kidney Disease (CKD) based on clinical and laboratory biomarkers. This phase transforms the cleaned and preprocessed medical data into predictive insights by training and evaluating classification algorithms.
+## 📌 Objective
 
-Dataset Splitting
+The objective of Week 3 is to develop and compare machine learning models capable of predicting **Chronic Kidney Disease (CKD)** using patient clinical and laboratory data. This phase focuses on implementing classification algorithms, optimizing their performance, and handling class imbalance to improve prediction accuracy.
 
-Before building machine learning models, the dataset was divided into two subsets:
+---
 
-Training Dataset (80%) – Used to train the machine learning models.
-Testing Dataset (20%) – Used to evaluate the performance of the trained models on unseen data.
+## 📂 Dataset Splitting
 
-The dataset was split using the train_test_split() function from Scikit-learn with a fixed random state to ensure reproducibility of the results.
+The cleaned dataset was divided into two subsets before training the machine learning models.
 
-Why is Train-Test Split Important?
+- **Training Set (80%)** – Used to train the models.
+- **Testing Set (20%)** – Used to evaluate the trained models on unseen data.
 
-Training and testing on separate datasets helps prevent overfitting. It allows the model to learn from one portion of the data while evaluating its ability to generalize to new, unseen patient records.
+The dataset was split using Scikit-learn's `train_test_split()` function with a fixed random state to ensure reproducibility.
 
-Feature Scaling
+### Why Train-Test Split?
 
-Feature scaling was applied using StandardScaler before training the Logistic Regression model.
+Separating the dataset prevents overfitting and allows the models to be evaluated on new data, providing a realistic estimate of their performance.
 
-Why Feature Scaling?
+---
 
-Medical features such as blood pressure, serum creatinine, blood glucose, and age have different value ranges. Standardizing these features improves model convergence and ensures that no single feature dominates the learning process.
+## ⚙️ Feature Scaling
 
-Machine Learning Models
+Feature scaling was applied using **StandardScaler** before training the Logistic Regression model.
 
-Two classification algorithms were implemented and compared.
+### Why Feature Scaling?
 
-1. Logistic Regression
+Medical attributes such as blood pressure, blood glucose, age, and serum creatinine have different value ranges. Standardization ensures that all features contribute equally during model training and improves convergence.
 
-Logistic Regression is a statistical classification algorithm that predicts the probability of a patient belonging to either the CKD or Non-CKD class.
+---
 
-Advantages
+## 🤖 Machine Learning Models
 
-Easy to understand and interpret
-Fast training time
-Performs well on linearly separable datasets
-Provides probability estimates
+Two supervised classification algorithms were implemented and compared.
 
-Purpose in this Project
+### 1. Logistic Regression
 
-Used as a baseline classification model for predicting Chronic Kidney Disease.
+Logistic Regression is a statistical classification algorithm used to estimate the probability that a patient belongs to the CKD or Non-CKD class.
 
-2. Random Forest Classifier
+#### Advantages
 
-Random Forest is an ensemble learning algorithm that combines multiple decision trees to improve prediction accuracy.
+- Simple and interpretable
+- Fast training process
+- Suitable for binary classification
+- Produces probability estimates
 
-Advantages
+#### Purpose
 
-Handles complex relationships between medical variables
-Less prone to overfitting than a single decision tree
-Works well with both numerical and categorical features
-Provides feature importance scores
+Used as the baseline classification model for Chronic Kidney Disease prediction.
 
-Purpose in this Project
+---
 
-Used to improve predictive performance and compare results against Logistic Regression.
+### 2. Random Forest Classifier
 
-Hyperparameter Tuning
+Random Forest is an ensemble learning algorithm that combines multiple decision trees to improve prediction accuracy and reduce overfitting.
 
-Hyperparameter tuning was performed to optimize model performance.
+#### Advantages
 
-The following parameters were adjusted:
+- Handles complex feature relationships
+- Works well with medical datasets
+- Less prone to overfitting
+- Provides feature importance scores
 
-Logistic Regression
-Maximum iterations (max_iter)
-Regularization strength (C)
-Solver
-Random Forest
-Number of trees (n_estimators)
-Maximum tree depth (max_depth)
-Minimum samples required to split a node (min_samples_split)
-Minimum samples required at a leaf node (min_samples_leaf)
+#### Purpose
 
-Hyperparameter tuning helps identify the best model configuration, leading to improved prediction accuracy and better generalization.
+Used to improve prediction accuracy and compare its performance with Logistic Regression.
 
-Handling Class Imbalance
+---
 
-Medical datasets often contain significantly more healthy patients than diseased patients. Such imbalance can bias machine learning models toward the majority class.
+## 🎯 Hyperparameter Tuning
 
-To address this issue, the Synthetic Minority Oversampling Technique (SMOTE) was applied to the training dataset.
+Hyperparameter tuning was performed to optimize the performance of both classification models.
 
-What is SMOTE?
+### Logistic Regression
 
-SMOTE generates synthetic samples of the minority class rather than simply duplicating existing records. This creates a more balanced training dataset and helps the model learn disease patterns more effectively.
+The following parameters were tuned:
 
-Benefits of SMOTE
-Reduces bias toward the majority class
-Improves recall for CKD detection
-Enhances overall model performance
-Produces a balanced dataset for training
+- `max_iter`
+- `C` (Regularization Strength)
+- `solver`
 
-Note: SMOTE was applied only to the training data to prevent data leakage and ensure a fair evaluation on the testing dataset.
+### Random Forest
 
-Model Training Workflow
+The following parameters were tuned:
 
-The predictive modeling process followed these steps:
+- `n_estimators`
+- `max_depth`
+- `min_samples_split`
+- `min_samples_leaf`
 
-Load the cleaned and preprocessed CKD dataset.
-Separate input features (X) and target variable (y).
-Split the dataset into training and testing sets.
-Apply feature scaling where required.
-Balance the training dataset using SMOTE.
-Train the Logistic Regression model.
-Train the Random Forest Classifier.
-Tune model hyperparameters.
-Generate predictions on the testing dataset.
-Compare the performance of both models.
-Evaluation Metrics
+Hyperparameter tuning improves model generalization and helps identify the optimal model configuration.
 
-The models were evaluated using multiple classification metrics.
+---
 
-Accuracy
+## ⚖️ Handling Class Imbalance
+
+Medical datasets frequently contain more healthy patients than diseased patients. Such imbalance can bias machine learning models toward the majority class.
+
+To overcome this issue, **SMOTE (Synthetic Minority Oversampling Technique)** was applied to the training dataset.
+
+### What is SMOTE?
+
+SMOTE generates synthetic examples for the minority class instead of duplicating existing records. This creates a balanced dataset and helps the models learn disease patterns more effectively.
+
+### Benefits of SMOTE
+
+- Reduces bias toward the majority class
+- Improves CKD detection
+- Increases Recall and F1-Score
+- Produces a balanced training dataset
+
+> **Note:** SMOTE was applied only to the training data to prevent data leakage.
+
+---
+
+## 🔄 Model Training Workflow
+
+The following workflow was implemented:
+
+1. Load the cleaned CKD dataset.
+2. Separate features (`X`) and target variable (`y`).
+3. Split the dataset into training and testing sets.
+4. Apply feature scaling where required.
+5. Balance the training data using SMOTE.
+6. Train the Logistic Regression model.
+7. Train the Random Forest model.
+8. Tune model hyperparameters.
+9. Predict outcomes using the testing dataset.
+10. Compare the performance of both models.
+
+---
+
+## 📊 Model Evaluation
+
+The trained models were evaluated using the following performance metrics:
+
+### Accuracy
 
 Measures the percentage of correctly classified patient records.
 
-Precision
+### Precision
 
-Indicates how many patients predicted as CKD actually have the disease.
+Measures how many patients predicted as CKD actually have the disease.
 
-Recall (Sensitivity)
+### Recall (Sensitivity)
 
 Measures how many actual CKD patients were correctly identified.
 
-F1-Score
+### F1-Score
 
-Balances Precision and Recall, making it especially useful for imbalanced medical datasets.
+Provides a balanced evaluation by combining Precision and Recall.
 
-Confusion Matrix
+### Confusion Matrix
 
-Shows the number of:
+The Confusion Matrix summarizes:
 
-True Positives (Correct CKD predictions)
-True Negatives (Correct Healthy predictions)
-False Positives
-False Negatives
+- True Positives (TP)
+- True Negatives (TN)
+- False Positives (FP)
+- False Negatives (FN)
 
-This helps understand the strengths and weaknesses of each model.
+This provides a detailed understanding of model performance.
 
-Outcome
+---
 
-At the end of Week 3:
+## ✅ Week 3 Outcomes
 
-Successfully divided the dataset into training and testing sets.
-Built and trained Logistic Regression and Random Forest classification models.
-Applied feature scaling to improve model performance.
-Handled class imbalance using SMOTE.
-Tuned model hyperparameters to achieve better predictive accuracy.
-Evaluated both models using multiple performance metrics.
-Compared the effectiveness of both algorithms in predicting Chronic Kidney Disease.
+By the end of Week 3, the following tasks were successfully completed:
+
+- Split the dataset into training and testing subsets.
+- Built and trained Logistic Regression and Random Forest classifiers.
+- Applied feature scaling using StandardScaler.
+- Addressed class imbalance using SMOTE.
+- Tuned model hyperparameters for improved performance.
+- Evaluated both models using multiple classification metrics.
+- Compared model performance to identify the most effective algorithm for CKD prediction.
+
+---
+
+## 🛠️ Technologies Used
+
+- Python
+- Pandas
+- NumPy
+- Scikit-learn
+- imbalanced-learn (SMOTE)
+- Matplotlib
+- Seaborn
+- Jupyter Notebook
+
+---
+
+## 📝 Conclusion
+
+Week 3 focused on implementing supervised machine learning techniques for Chronic Kidney Disease prediction. Two classification models—Logistic Regression and Random Forest—were trained and optimized through hyperparameter tuning. Class imbalance was addressed using SMOTE, ensuring fair model learning. The models were evaluated using standard classification metrics, providing a solid foundation for model evaluation, comparison, and deployment in Week 4.
+
+
